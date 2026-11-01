@@ -36,21 +36,10 @@ public class HiddenWordLibrary {
 
 
     public String getWord(int pos, int difficulty) {
-        
-        if (difficulty == 1) {
-            return easyWords[pos];
-        }
-
-        else if (difficulty == 2) {
-            return mediumWords[pos];
-        }
-
-        else if (difficulty == 3) {
-            return hardWords[pos];
-        }
-
-        else {
-            return "Error, invalid difficulty level.";
-        }
+        return switch (difficulty) {
+            case 1 -> easyWords[pos];
+            case 2 -> mediumWords[pos];
+            default -> hardWords[pos];
+        };
     }
-    }
+}

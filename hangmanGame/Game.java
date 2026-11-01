@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Game {
     public String guess;
     public Scanner in = new Scanner(System.in);
-    public int difficultyChoice;
+    public int difficultyChoice = 1;
     public String hiddenWord;
     public HangManStages CurrentHangManStage;
     public HiddenWordGenerator hiddenWordGenerator;
@@ -19,12 +19,12 @@ public class Game {
 
     public void startGame() {
         System.out.println("Welcome to Hangman!");
-        System.out.println("Enter difficulty (1-3): ");
-        difficultyChoice = in.nextInt();
+        while (difficultyChoice < 1 || difficultyChoice > 3) {
+            System.out.println("Please enter a valid difficulty level (1-3): ");
+            difficultyChoice = in.nextInt();
+        }
         hiddenWord = hiddenWordGenerator.generateRandomWord(difficultyChoice);
 
-        //Test
-        System.out.println(hiddenWord);
         printHiddenWord();
 
         while (!isGameOver()) {
