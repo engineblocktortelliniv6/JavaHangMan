@@ -41,6 +41,12 @@ public class Game {
     public void makeGuess() {
         System.out.println("Enter your guess: ");
         guess = in.next();
+
+        if(guess.length() != 1) {
+            System.out.println("Please enter a single letter.");
+            makeGuess();
+        }
+        
         discoverLetter(guess);
         printHiddenWord();
     }
