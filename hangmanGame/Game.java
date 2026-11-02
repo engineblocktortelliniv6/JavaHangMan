@@ -13,17 +13,12 @@ public class Game {
 
     public Game(HangManStages hangManStages, HiddenWordGenerator hiddenWordGenerator) {
         this.CurrentHangManStage = hangManStages;
-        this.hiddenWord = hiddenWordGenerator.generateRandomWord(difficultyChoice);
         this.hiddenWordGenerator = hiddenWordGenerator;
     }
 
-    public void startGame() {
+    public void startGame(String hiddenWord) {
+        this.hiddenWord = hiddenWord;
         System.out.println("Welcome to Hangman!");
-        while (difficultyChoice < 1 || difficultyChoice > 3) {
-            System.out.println("Please enter a valid difficulty level (1-3): ");
-            difficultyChoice = in.nextInt();
-        }
-        hiddenWord = hiddenWordGenerator.generateRandomWord(difficultyChoice);
 
         printHiddenWord();
 
